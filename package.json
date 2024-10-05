@@ -1,0 +1,68 @@
+{
+  "name": "@chronicals/create-chronicals-app",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "bin": "bin/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "dev": "tsc && ./bin/index.js",
+    "release": "npm run build && release-it",
+    "sync-labels": "github-label-sync --labels .github/labels.json chronicles/create-chronicals-app"
+  },
+  "author": "Kumar Yash",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "inquirer": "^11.1.0",
+    "tiged": "^2.12.7",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^22.7.4",
+    "@types/yargs": "^17.0.33",
+    "typescript": "^5.6.2"
+  },
+  "publishConfig": {
+    "provenance": true,
+    "access": "public",
+    "tag": "latest"
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**",
+      "dist/**",
+      "examples/**"
+    ]
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore(release): ${version}",
+      "tagAnnotation": "v${version}",
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}",
+      "web": true
+    },
+    "npm": {
+      "publish": true,
+      "skipChecks": true,
+      "publishArgs": [
+        "--no-provenance"
+      ]
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": {
+          "name": "angular"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist",
+      "lib": ["esnext"],
+      "module": "commonjs",
+      "target": "ES2019",
+      "declaration": true,
+      "esModuleInterop": true,
+      "strict": true,
+      "strictNullChecks": true,
+      "rootDir": "./src",
+      "moduleResolution": "node"
+    },
+    "include": ["./src/**/*", "./package.json"],
+    "exclude": ["node_modules"]
+  }
